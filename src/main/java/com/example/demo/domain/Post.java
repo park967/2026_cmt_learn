@@ -16,15 +16,16 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //실간
     @Column(name = "post_id")
     private long id;
     private String title;
     private String content;
     private String author;
     private long viewcount;
+    private int delPost;
     @CreatedDate
     private LocalDateTime createdAt;
+
 
 
 }

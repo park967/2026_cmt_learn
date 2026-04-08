@@ -17,9 +17,11 @@ public interface PostService {
     Post findbyId( long id);
     //수정
     Post update(long id, Post post);
-    //데이터 삭제
+    //데이터 물리 삭제
      void delete(long id);
-
+    // 테이터 논리 삭제
+    Post softdelete(long id);
+    //페이징 리스트
     Page<Post> getPostList(Pageable pageable);
 
 

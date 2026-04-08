@@ -57,4 +57,13 @@ public class PostApiController {
         postService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    //5 게시글 논리적 삭제
+    @Operation(summary = "게시글 논리적 삭제")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> softdeletePost(@PathVariable Long id) {
+        postService.softdelete(id);
+        return ResponseEntity.ok("성공적으로 삭제(논리 삭제) 되었습니다.");
+    }
+
 }

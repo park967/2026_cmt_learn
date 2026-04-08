@@ -24,10 +24,7 @@ public class PostController {
     public String list(Model model, @PageableDefault(sort = "id",
             direction = Sort.Direction.DESC) Pageable pageable) {
 
-        // 1. 서비스에 pageable을 전달해서 딱 3개만 담긴 Page 객체를 받습니다.
         Page<Post> postPage = postService.getPostList(pageable);
-
-        // 2. HTML에 Page 객체를 통째로 넘깁니다.
         model.addAttribute("posts", postPage);
 
         return "post/list";
@@ -72,7 +69,11 @@ public class PostController {
 
     @PostMapping("/{id}/delete")
     public String deletePost(@PathVariable Long id){
-        postService.delete(id);
+        postService.softdelete(id);
         return "redirect:/posts";
     }
+
+
+
+
 }
